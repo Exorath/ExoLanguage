@@ -30,7 +30,7 @@ public class IMessage implements Message {
     private String defaultTemplate;
     private HashMap<String, Object> arguments = new HashMap<>();
 
-    public IMessage(Language language, String messageKey, String defaultMsg) {
+    public IMessage(Language language, String messageKey) {
         this.language = language;
         this.messageKey = messageKey;
     }

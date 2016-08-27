@@ -22,12 +22,18 @@ import com.exorath.language.api.Language;
 import java.util.HashMap;
 
 /**
+ * The {@link LanguagesPack} represents a collection of {@link LanguagePack}'s in different languages.
  * Created by toonsev on 8/26/2016.
  */
 public interface LanguagesPack {
     /**
-     * Gets the registered templates by their key id. These templates should already be in memory.
-     * @return the registered templates by their key id.
+     * Gets the registered {@link LanguagePack}'s by their Language.
+     *
+     * If you override this method make sure it does not require any io.
+     * The IO should be done when the {@link LanguagesPack} is instantiated.
+     * Take a look at {@link com.exorath.language.impl.templates.MongoLanguagesPack} for an example.
+     *
+     * @return the registered {@link LanguagePack}'s by their Language.
      */
     HashMap<Language, LanguagePack> getTemplatePacks();
 }

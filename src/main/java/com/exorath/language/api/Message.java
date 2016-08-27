@@ -21,6 +21,8 @@ import com.exorath.language.impl.IMessage;
 import java.util.HashMap;
 
 /**
+ * A message represents a message before translation.
+ * It contains the language it should be translated in, the params that can be used by the template, the identifier of the template and the default template if no template was found under the id.
  * Created by toonsev on 8/24/2016.
  */
 public interface Message {
@@ -65,7 +67,14 @@ public interface Message {
      */
     String getDefaultTemplate();
 
-    static Message create(Language language, String messageKey, String defaultMsg){
-        return new IMessage(language, messageKey, defaultMsg);
+    /**
+     * Creates a new Message instance.
+     * If you do not set a default with {@link #withDefault(String)}, {@link LanguageAPI#getTranslated(Message)} will return null if no translation is found under the id.
+     * @param language the language you wish to translate the message to
+     * @param messageKey the key of the template you wish to find
+     * @return the newly created instance
+     */
+    static Message create(Language language, String messageKey){
+        return new IMessage(language, messageKey);
     }
 }
